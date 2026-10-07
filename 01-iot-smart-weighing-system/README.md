@@ -57,7 +57,7 @@ Photos of the prototype and hardware will be added here.
 A short demonstration of the prototype measuring weight and
 transmitting the reading to ThingSpeak.
 
-▶️ **[Watch the demonstration](./01-iot-smart-weighing-demo.mp4)**
+▶️ **[Watch the demonstration](./smart-weighing-demo.mp4)**
 
 ## 📚 What I Learned
 
