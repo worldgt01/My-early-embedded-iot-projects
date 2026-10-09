@@ -4,18 +4,18 @@
   Sensor:  Analog soil moisture sensor
   Outputs: I2C LCD (16x2) and a buzzer
 
-  Behaviour:
-    - Reads the soil moisture sensor once per second (average of 10 samples)
-    - Converts the reading to a moisture percentage and shows it on the LCD
-    - When the soil is dry (below the threshold), the LCD shows DRY
-      and the buzzer gives a short beep with each reading
+  Behaviour (three states):
+    - NEEDS WATER : moisture is too low  -> the buzzer keeps beeping
+    - OVERFLOW    : moisture is too high -> the buzzer keeps beeping
+    - PERFECT     : moisture is in the right range -> the buzzer stays silent
+    The moisture percentage and the current state are shown on the LCD.
 
   NOTE: This sketch was reconstructed in 2026 from the design of the
   original 2024 project. The original source file was not kept. Pin numbers,
-  the calibration values, the dry threshold and the LCD address are typical
-  or placeholder values, not recovered ones. The calibration values must be
-  re-measured with the sensor in dry air and in water before the percentages
-  can be trusted.
+  the calibration values, the two thresholds, the LCD address and the LCD
+  wording are typical or placeholder values, not recovered ones. The
+  calibration values must be re-measured with the sensor in dry air and in
+  water before the percentages can be trusted.
 
   Library: "LiquidCrystal I2C" by Frank de Brabander (install from the Library Manager)
 */
@@ -30,7 +30,8 @@ const int BUZZER_PIN = 8;    // Active buzzer
 // ---------- Calibration and settings ----------
 const int DRY_VALUE = 1023;                    // Placeholder: raw reading in dry air
 const int WET_VALUE = 300;                     // Placeholder: raw reading in water
-const int DRY_THRESHOLD_PERCENT = 30;          // Below this the soil counts as dry
+const int NEEDS_WATER_BELOW_PERCENT = 30;      // Below this: needs water
+const int OVERFLOW_ABOVE_PERCENT    = 80;      // Above this: overflow
 const unsigned long READ_INTERVAL_MS = 1000;   // Time between readings
 
 // ---------- LCD settings ----------
@@ -66,7 +67,7 @@ void setup() {
   lcd.backlight();
   lcd.clear();
   lcd.setCursor(0, 0);
-  lcd.print("Soil Moisture:");
+  lcd.print("Moisture level:");
 }
 
 void loop() {
@@ -74,19 +75,32 @@ void loop() {
     lastReading = millis();
 
     int percent = readMoisturePercent();
-    bool dry = (percent < DRY_THRESHOLD_PERCENT);
+
+    const char* state;
+    bool alarm;
+    if (percent < NEEDS_WATER_BELOW_PERCENT) {
+      state = "NEEDS WATER";
+      alarm = true;
+    } else if (percent > OVERFLOW_ABOVE_PERCENT) {
+      state = "OVERFLOW";
+      alarm = true;
+    } else {
+      state = "PERFECT";
+      alarm = false;
+    }
 
     char line[17];
-    snprintf(line, sizeof(line), "%3d%%  %-8s", percent, dry ? "DRY" : "OK");
+    snprintf(line, sizeof(line), "%3d%% %-11s", percent, state);
     lcd.setCursor(0, 1);
     lcd.print(line);
 
     Serial.print("Moisture: ");
     Serial.print(percent);
-    Serial.println("%");
+    Serial.print("% - ");
+    Serial.println(state);
 
-    if (dry) {
-      beep();
+    if (alarm) {
+      beep();   // Repeats on every reading while the alarm state lasts
     }
   }
 }
