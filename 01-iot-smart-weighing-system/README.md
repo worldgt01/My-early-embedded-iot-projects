@@ -55,9 +55,14 @@ Photos of the prototype and hardware will be added here.
 ## 🎥 Demonstration
 
 A short demonstration of the prototype measuring weight and
+
 transmitting the reading to ThingSpeak.
 
-▶️ **[Watch the demonstration](./smart-weighing-demo.mp4)**
+
+https://github.com/user-attachments/assets/c3c727fe-c0a8-4a23-8e07-dee15e3aaec6
+
+
+
 
 ## 📚 What I Learned
 
@@ -77,3 +82,6 @@ This project was part of my early exploration of embedded systems and
 IoT in 2024. It gave me practical experience moving beyond basic
 hardware interfacing toward connected systems capable of collecting,
 processing, and remotely monitoring real-world data.
+
+## Demo
+
