@@ -83,5 +83,3 @@ IoT in 2024. It gave me practical experience moving beyond basic
 hardware interfacing toward connected systems capable of collecting,
 processing, and remotely monitoring real-world data.
 
-## Demo
-
