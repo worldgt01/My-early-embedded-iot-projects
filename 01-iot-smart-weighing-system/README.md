@@ -13,15 +13,11 @@ The system was designed to measure the weight of an object using a
 load cell and transmit the measured data to the cloud for remote
 monitoring.
 
-As part of the prototype, I also added a small speaker to experiment
-with audio feedback and system interaction.
-
 ## 🛠️ Hardware & Technologies
 
-- Microcontroller
+- ESP32 microcontroller
 - Load Cell
 - HX711 Load Cell Amplifier
-- Speaker
 - Jumper Wires & Breadboard
 - Wi-Fi Connectivity
 - ThingSpeak IoT Platform
@@ -37,8 +33,6 @@ which is processed by the microcontroller.
 Using Wi-Fi connectivity, the measured weight was transmitted to
 ThingSpeak, allowing the measurement to be monitored remotely.
 
-The prototype also included a small speaker for audio feedback.
-
 ## 📊 Example IoT Reading
 
 During testing, the system successfully transmitted a weight reading
@@ -46,7 +40,8 @@ of:
 
 **552 grams**
 
-The measurement was viewed remotely through the ThingSpeak platform.
+The object being weighed was a small speaker, and the measurement was
+viewed remotely through the ThingSpeak platform.
 
 ## 📸 Project Photos
 
@@ -55,14 +50,15 @@ Photos of the prototype and hardware will be added here.
 ## 🎥 Demonstration
 
 A short demonstration of the prototype measuring weight and
-
 transmitting the reading to ThingSpeak.
-
 
 https://github.com/user-attachments/assets/c3c727fe-c0a8-4a23-8e07-dee15e3aaec6
 
+## 💻 Code
 
+The Arduino sketch is in [`code/smart_weighing`](./code/smart_weighing/smart_weighing.ino).
 
+> **Note:** The original 2024 source file was not kept. This sketch was reconstructed in 2026 from the project's design and behaviour, so pin numbers and the calibration factor are typical or placeholder values, not recovered ones.
 
 ## 📚 What I Learned
 
@@ -72,7 +68,6 @@ https://github.com/user-attachments/assets/c3c727fe-c0a8-4a23-8e07-dee15e3aaec6
 - Sending sensor data to an IoT platform
 - Working with ThingSpeak for remote data monitoring
 - Hardware integration and troubleshooting
-- Experimenting with audio feedback in embedded systems
 
 ---
 
@@ -83,3 +78,4 @@ IoT in 2024. It gave me practical experience moving beyond basic
 hardware interfacing toward connected systems capable of collecting,
 processing, and remotely monitoring real-world data.
 
+*Originally developed in 2024. Documented and uploaded in 2026.*
