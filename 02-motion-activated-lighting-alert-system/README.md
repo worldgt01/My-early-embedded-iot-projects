@@ -60,7 +60,13 @@ https://github.com/user-attachments/assets/90deee1a-fd9d-4031-8fa2-dc0cde1a39f5
 
 https://github.com/user-attachments/assets/29ec3711-73ba-457f-a784-5f76a605a85a
 
+## 💻 Code
 
+The Arduino sketch is in [`code/motion_lighting_alert`](./code/motion_lighting_alert/motion_lighting_alert.ino).
+
+> **Note:** The original 2024 source file was not kept. This sketch was reconstructed in 2026 from the project's design and behaviour, so pin numbers are typical values, not recovered ones.
+
+---
 
 ## 📚 What I Learned
 
