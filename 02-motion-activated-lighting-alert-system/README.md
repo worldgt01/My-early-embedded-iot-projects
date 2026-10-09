@@ -49,6 +49,19 @@ Some of the components I worked with during my early embedded systems experiment
 
 ---
 
+## 🎥 Demonstration
+
+A short demonstration of the system switching the lamp on when motion is detected.
+
+
+https://github.com/user-attachments/assets/90deee1a-fd9d-4031-8fa2-dc0cde1a39f5
+
+
+
+https://github.com/user-attachments/assets/29ec3711-73ba-457f-a784-5f76a605a85a
+
+
+
 ## 📚 What I Learned
 
 - Interfacing a PIR motion sensor with a microcontroller
